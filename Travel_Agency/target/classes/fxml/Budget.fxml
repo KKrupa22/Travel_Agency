@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="119.0" prefWidth="229.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BudgetController">
+   <children>
+      <Label layoutX="30.0" layoutY="14.0" text="Insert your budget:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="insertField" layoutX="40.0" layoutY="47.0">
+         <tooltip>
+            <Tooltip text="Insert your budget here" />
+         </tooltip></TextField>
+      <Button fx:id="save" defaultButton="true" layoutX="98.0" layoutY="80.0" mnemonicParsing="false" onAction="#save" text="OK">
+         <tooltip>
+            <Tooltip text="Click to save your budget" />
+         </tooltip></Button>
+   </children>
+</AnchorPane>
