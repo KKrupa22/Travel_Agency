@@ -19,11 +19,10 @@ import kamil.krupa.cw2_final.*;
  * @author Kamil
  */
 
-public class MenuController {
+public class MenuUserController {
     
     @FXML private Button available;
     @FXML private Button check;
-    @FXML private Button addTrip;
     @FXML private Button exit;
     private TripList trips;
     private String[] args;
@@ -35,7 +34,7 @@ public class MenuController {
      * @param args - argument passed from console
      */
    
-    public MenuController (TripList trips, String[] args) {
+    public MenuUserController (TripList trips, String[] args) {
         this.trips = trips;
         this.args = args;
     }
@@ -48,22 +47,29 @@ public class MenuController {
     
     @FXML
     private void availableTrip(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Available.fxml"));
-        loader.setControllerFactory(p -> {return new AvailableController(trips);});
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/AvailableUser.fxml"));
+        loader.setControllerFactory(p -> {return new AvailableUserController(trips);});
         Parent root = loader.load();
         App.setRoot(root);
     }
     
     /**
-     * addTrip method is used to open new addTrip window
+     * checkTrip method is used to open new checkTrip window
      * @param event
      * @throws IOException 
      */
     
     @FXML
-    private void addTrip(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/AddTrip.fxml"));
-        loader.setControllerFactory(p -> {return new AddTripController(trips);});
+    private void checkTrip(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Check.fxml"));
+        loader.setControllerFactory(p -> {
+            try {
+                return new CheckController(trips, args);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return null;
+            }
+        });
         Parent root = loader.load();
         App.setRoot(root);
     }

@@ -14,12 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.DoubleStringConverter;
 import kamil.krupa.cw2_final.*;
 
 /**
@@ -27,9 +24,9 @@ import kamil.krupa.cw2_final.*;
  *
  * @author Kamil Krupa
  */
-public class AvailableController implements Initializable {
+public class AvailableUserController implements Initializable {
     
-    @FXML private Button back;
+    @FXML private Button buy;
     @FXML private Button delete;
     @FXML private TableView availableTab;
     @FXML private TableColumn<Trip, String> countryCol;
@@ -46,7 +43,7 @@ public class AvailableController implements Initializable {
      * @param trips 
      */
     
-    public AvailableController (TripList trips) {
+    public AvailableUserController (TripList trips) {
         this.trips = trips;
     }
     
@@ -58,14 +55,14 @@ public class AvailableController implements Initializable {
     
     @FXML
     public void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Menu.fxml"));
-        loader.setControllerFactory(p -> {return new MenuController(trips, args);});
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/MenuUser.fxml"));
+        loader.setControllerFactory(p -> {return new MenuUserController(trips, args);});
         Parent root = loader.load();
         App.setRoot(root);
     }
     
     @FXML
-    public void delete(ActionEvent event) throws IOException {
+    public void buy(ActionEvent event) throws IOException {
         availableTab.getItems().remove(availableTab.getSelectionModel().getSelectedItem());
     }
 
@@ -78,36 +75,12 @@ public class AvailableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         availableTab.setItems(trips.getData());
-        availableTab.setEditable(true);
         
         countryCol.setCellValueFactory(new PropertyValueFactory<Trip, String>("country"));
-        countryCol.setCellFactory(TextFieldTableCell.forTableColumn());	
-        countryCol.setOnEditCommit(t -> {
-            (t.getTableView().getItems().get(t.getTablePosition().getRow())).setCountry(t.getNewValue());
-        });
-        
         cityCol.setCellValueFactory(new PropertyValueFactory<Trip, String>("place"));
-        cityCol.setCellFactory(TextFieldTableCell.forTableColumn());	
-        cityCol.setOnEditCommit(t -> {
-            (t.getTableView().getItems().get(t.getTablePosition().getRow())).setPlace(t.getNewValue());
-        });
-        
         depCityCol.setCellValueFactory(new PropertyValueFactory<Trip, String>("depPlace"));
-        depCityCol.setCellFactory(TextFieldTableCell.forTableColumn());	
-        depCityCol.setOnEditCommit(t -> {
-            (t.getTableView().getItems().get(t.getTablePosition().getRow())).setDepPlace(t.getNewValue());
-        });
-        
         priceCol.setCellValueFactory(new PropertyValueFactory<Trip, Double>("price"));
-        priceCol.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));	
-        priceCol.setOnEditCommit(t -> {
-            (t.getTableView().getItems().get(t.getTablePosition().getRow())).setPrice(t.getNewValue());
-        });
-        
         dateCol.setCellValueFactory(new PropertyValueFactory<Trip, String>("date"));
-        dateCol.setCellFactory(TextFieldTableCell.forTableColumn());	
-        dateCol.setOnEditCommit(t -> {
-            (t.getTableView().getItems().get(t.getTablePosition().getRow())).setDate(t.getNewValue());
-        });
+
     }
 }

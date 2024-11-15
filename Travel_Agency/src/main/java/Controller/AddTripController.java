@@ -80,6 +80,11 @@ public class AddTripController {
             Trip newTrip = new Trip(country, city, depCity, Double.parseDouble(price), date);
             trips.add(newTrip);
             
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Added succesfully");
+            alert.setContentText("Trip added succesfully.");
+            alert.showAndWait();
+            
             txtCountry.clear();
             txtCity.clear();
             txtDepCity.clear();

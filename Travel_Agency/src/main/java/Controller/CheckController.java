@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import kamil.krupa.cw2_final.App;
@@ -104,8 +103,8 @@ public class CheckController implements Initializable {
     
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Menu.fxml"));
-        loader.setControllerFactory(p -> {return new MenuController(trips, args);});
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/MenuUser.fxml"));
+        loader.setControllerFactory(p -> {return new MenuUserController(trips, args);});
         Parent root = loader.load();
         App.setRoot(root);
     }

@@ -47,10 +47,10 @@ public class LoginController {
     public void login(ActionEvent event) throws IOException {
         try {
             for(User user : usersList) {
-                if(user.getLogin().equals(loginText.getText()) && user.getPassword().equals(passwordText.getText())) {
-                    if(user.getIsAdmin() == false) {
-                        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Menu.fxml"));
-                        loader.setControllerFactory(p -> {return new MenuController(trips, args);});
+                if(user.login().equals(loginText.getText()) && user.password().equals(passwordText.getText())) {
+                    if(user.isAdmin() == false) {
+                        FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/MenuUser.fxml"));
+                        loader.setControllerFactory(p -> {return new MenuUserController(trips, args);});
                         Parent root = loader.load();
                         App.setRoot(root);
                         break;
@@ -62,7 +62,7 @@ public class LoginController {
                         break;
                     }
                 }
-                if(user.getLogin().equals(loginText.getText()) && !user.getPassword().equals(passwordText.getText())) {
+                if(user.login().equals(loginText.getText()) && !user.password().equals(passwordText.getText())) {
                     throw new WrongLoginException("Wrong login or password.");
                 }
             }

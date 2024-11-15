@@ -8,19 +8,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <Button fx:id="available" layoutX="193.0" layoutY="106.0" mnemonicParsing="false" onAction="#availableTrip" prefHeight="45.0" prefWidth="213.0" text="Check available trips">
+      <Button fx:id="available" layoutX="193.0" layoutY="84.0" mnemonicParsing="false" onAction="#availableTrip" prefHeight="73.0" prefWidth="213.0" text="Check available trips">
          <tooltip>
             <Tooltip text="Click to check available trips" />
          </tooltip></Button>
-      <Button fx:id="check" layoutX="193.0" layoutY="177.0" mnemonicParsing="false" onAction="#checkTrip" prefHeight="45.0" prefWidth="213.0" text="Check for trips in your budget">
-         <tooltip>
-            <Tooltip text="Click to check trips in your budget" />
-         </tooltip></Button>
-      <Button fx:id="addTrip" layoutX="193.0" layoutY="246.0" mnemonicParsing="false" onAction="#addTrip" prefHeight="45.0" prefWidth="213.0" text="Add new trips">
+      <Button fx:id="addTrip" layoutX="193.0" layoutY="188.0" mnemonicParsing="false" onAction="#addTrip" prefHeight="73.0" prefWidth="213.0" text="Add new trips">
          <tooltip>
             <Tooltip text="Click to add new trips" />
          </tooltip></Button>
-      <Button fx:id="exit" cancelButton="true" layoutX="193.0" layoutY="312.0" mnemonicParsing="false" onAction="#exit" prefHeight="45.0" prefWidth="213.0" text="Exit">
+      <Button fx:id="exit" cancelButton="true" layoutX="194.0" layoutY="296.0" mnemonicParsing="false" onAction="#exit" prefHeight="73.0" prefWidth="213.0" text="Exit">
          <tooltip>
             <Tooltip text="Click to exit from app" />
          </tooltip></Button>
