@@ -28,12 +28,20 @@ public class LoginController {
         @FXML private TextField loginText;
         @FXML private PasswordField passwordText;
         @FXML private Button login;
-        private Users users;
+        private GenericList<User> users;
         private ArrayList<User> usersList; 
-        private TripList trips;
+        private GenericList<Trip> trips;
         private String[] args;
+    
+        /**
+         * LoginController constructor which is given users, trip and args
+         * and also usersList in which we add all users declared.
+         * @param users
+         * @param trips
+         * @param args 
+         */
         
-    public LoginController(Users users, TripList trips, String[] args) {
+    public LoginController(GenericList<User> users, GenericList<Trip> trips, String[] args) {
         this.users = users;
         this.trips = trips;
         this.args = args;
@@ -43,6 +51,12 @@ public class LoginController {
             usersList.add(users.get(i));
         }
     }
+    
+    /**
+     * login method is used to login to the account
+     * @param event
+     * @throws IOException 
+     */
     
     public void login(ActionEvent event) throws IOException {
         try {

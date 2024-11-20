@@ -35,7 +35,7 @@ public class AvailableUserController implements Initializable {
     @FXML private TableColumn<Trip, Double> priceCol;
     @FXML private TableColumn<Trip, String> dateCol;
     
-    private TripList trips;
+    private GenericList<Trip> trips;
     private String[] args;
     
     /**
@@ -43,7 +43,7 @@ public class AvailableUserController implements Initializable {
      * @param trips 
      */
     
-    public AvailableUserController (TripList trips) {
+    public AvailableUserController (GenericList<Trip> trips) {
         this.trips = trips;
     }
     
@@ -60,6 +60,12 @@ public class AvailableUserController implements Initializable {
         Parent root = loader.load();
         App.setRoot(root);
     }
+    
+    /**
+     * buy method is used to delete trip from table
+     * @param event
+     * @throws IOException 
+     */
     
     @FXML
     public void buy(ActionEvent event) throws IOException {

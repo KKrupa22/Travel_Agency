@@ -36,7 +36,7 @@ public class CheckController implements Initializable {
     @FXML private TableColumn depCityCol;
     @FXML private TableColumn priceCol;
     @FXML private TableColumn dateCol;
-    private TripList trips;
+    private GenericList<Trip> trips;
     private String[] args;
     private double budget;
     private ObservableList<Trip> data = FXCollections.observableArrayList();
@@ -58,10 +58,9 @@ public class CheckController implements Initializable {
      * @throws IOException 
      */
     
-    public CheckController (TripList trips, String[] args) throws IOException {
+    public CheckController (GenericList<Trip> trips, String[] args) throws IOException {
         this.trips = trips;
         this.args = args;
-        boolean tryControl = true;
         
         if(args != null) {
             budget = Double.parseDouble(args[0]);

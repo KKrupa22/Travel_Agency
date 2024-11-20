@@ -9,12 +9,13 @@ import javafx.fxml.FXML;
 import Model.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,7 +39,7 @@ public class AvailableController implements Initializable {
     @FXML private TableColumn<Trip, Double> priceCol;
     @FXML private TableColumn<Trip, String> dateCol;
     
-    private TripList trips;
+    private GenericList<Trip> trips;
     private String[] args;
     
     /**
@@ -46,7 +47,7 @@ public class AvailableController implements Initializable {
      * @param trips 
      */
     
-    public AvailableController (TripList trips) {
+    public AvailableController (GenericList<Trip> trips) {
         this.trips = trips;
     }
     
@@ -63,6 +64,12 @@ public class AvailableController implements Initializable {
         Parent root = loader.load();
         App.setRoot(root);
     }
+    
+    /**
+     * dele method is used to delete record from table
+     * @param event
+     * @throws IOException 
+     */
     
     @FXML
     public void delete(ActionEvent event) throws IOException {

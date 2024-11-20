@@ -16,9 +16,9 @@ import static javafx.application.Application.launch;
 public class App extends Application {
     
     private static Scene scene;
-    private static TripList trips;
+    private static GenericList<Trip> trips;
     private static String[] args;
-    private static Users users;
+    private static GenericList<User> users;
     
 
     @Override
@@ -41,13 +41,13 @@ public class App extends Application {
         fxmlLoader.setControllerFactory(p -> {return new LoginController(users, trips, args);});
         return fxmlLoader.load();
     }
-
+    
     public static void main(String[] args) throws NumberException {
-        users = new Users();
+        users = new GenericList<User>();
         users.add(new User("kamil", "123", "Kamil", "Krupa", false));
         users.add(new User("maciek", "321", "Maciej", "Adminowski", true));
         
-        trips = new TripList();
+        trips = new GenericList<Trip>();
         trips.add(new Trip("Poland", "Warsaw", "Katowice", 500, "20-24.11.24"));
         trips.add(new Trip("Germany", "Berlin", "Katowice", 1500, "20-24.11.24"));
         trips.add(new Trip("Spain", "Madrid", "Cracow", 2000, "10-16.12.24"));

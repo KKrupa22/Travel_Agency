@@ -12,19 +12,17 @@ import javafx.collections.ObservableList;
  * @author Kamil Krupa
  */
 
-public class TripList {
+public class GenericList<T> {
     
-    private ObservableList<Trip> data = FXCollections.observableArrayList();
-    private Trip trip;
+    private ObservableList<T> data = FXCollections.observableArrayList();
     
     /**
      * add method, it allows us to add a trip into our list
      * @param trip 
      */
     
-    public Trip add(Trip trip) {
-        data.add(trip);
-        return trip;
+    public void add(T element) {
+        data.add(element);
     }
     
     /**
@@ -42,8 +40,16 @@ public class TripList {
      * @return 
      */
     
-    public Trip get(int x) {
+    public T get(int x) {
         return data.get(x);
+    }
+    
+    /**
+     * clear method, it is used to clear our triplist
+     */
+    
+    public void clear() {
+        data.clear();
     }
     
     /**
@@ -51,7 +57,7 @@ public class TripList {
      * @return 
      */
     
-    public ObservableList<Trip> getData() {
+    public ObservableList<T> getData() {
         return data;
     }
     

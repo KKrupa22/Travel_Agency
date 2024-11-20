@@ -1,6 +1,7 @@
 Controller\CheckController.class
 Controller\MenuUserController.class
 Model\Trip.class
+Model\GenericList.class
 Model\WrongPriceException.class
 module-info.class
 Controller\BudgetController.class
@@ -14,5 +15,4 @@ Controller\AddTripController.class
 Model\User.class
 Controller\LoginController.class
 Controller\MenuController.class
-Model\TripList.class
 Controller\AvailableController.class

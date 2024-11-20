@@ -28,7 +28,8 @@ public class AddTripController {
     @FXML private TextField txtDate;
     @FXML private Button add;
     @FXML private Button back;
-    private TripList trips;
+    
+    private GenericList<Trip> trips;
     private String[] args;
     private String country;
     private String city;
@@ -41,7 +42,7 @@ public class AddTripController {
      * @param trips - list of trips
      */
     
-    public AddTripController(TripList trips){
+    public AddTripController(GenericList<Trip> trips){
         this.trips = trips;
     }
     

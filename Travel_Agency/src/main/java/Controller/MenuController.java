@@ -8,6 +8,8 @@ import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,9 +27,26 @@ public class MenuController {
     @FXML private Button check;
     @FXML private Button addTrip;
     @FXML private Button exit;
-    private TripList trips;
+    private GenericList<Trip> trips;
     private String[] args;
     
+    /**
+     * sortByPrice method is used to sort our Triplist by prices
+     * @param trips 
+     */
+    
+    private static void sortByPrice(GenericList<Trip> trips) {
+        List<Trip> temp = new ArrayList<>();
+        for(int i = 0; i < trips.size(); i++) {
+            temp.add(trips.get(i));
+        }
+        temp.sort((t1, t2) -> Double.compare(t1.getPrice(), t2.getPrice()));
+        trips.clear();
+        
+        for(Trip trip : temp) {
+            trips.add(trip);
+        }
+    }
     
     /**
      * MenuController constructor which is given trip and arguments.
@@ -35,7 +54,7 @@ public class MenuController {
      * @param args - argument passed from console
      */
    
-    public MenuController (TripList trips, String[] args) {
+    public MenuController (GenericList<Trip> trips, String[] args) {
         this.trips = trips;
         this.args = args;
     }
@@ -50,6 +69,7 @@ public class MenuController {
     private void availableTrip(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Available.fxml"));
         loader.setControllerFactory(p -> {return new AvailableController(trips);});
+        sortByPrice(trips);
         Parent root = loader.load();
         App.setRoot(root);
     }
