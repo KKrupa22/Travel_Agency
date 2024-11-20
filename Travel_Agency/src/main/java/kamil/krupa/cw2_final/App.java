@@ -42,18 +42,18 @@ public class App extends Application {
         return fxmlLoader.load();
     }
     
-    public static void main(String[] args) throws NumberException {
+    public static void main(String[] args) throws NumberException, EmptyFieldsException, WrongDateException {
         users = new GenericList<User>();
         users.add(new User("kamil", "123", "Kamil", "Krupa", false));
         users.add(new User("maciek", "321", "Maciej", "Adminowski", true));
         
         trips = new GenericList<Trip>();
-        trips.add(new Trip("Poland", "Warsaw", "Katowice", 500, "20-24.11.24"));
-        trips.add(new Trip("Germany", "Berlin", "Katowice", 1500, "20-24.11.24"));
-        trips.add(new Trip("Spain", "Madrid", "Cracow", 2000, "10-16.12.24"));
-        trips.add(new Trip("England", "London", "Warsaw", 1250, "20-27.12.24"));
-        trips.add(new Trip("Japan", "Tokyo", "Berlin", 3000, "03-05.01.25"));
-        trips.add(new Trip("Italy", "Rome", "Katowice", 2200, "13-18.12.24"));
+        trips.add(new Trip("Poland", "Warsaw", "Katowice", 500, "20.11-24.11.2024"));
+        trips.add(new Trip("Germany", "Berlin", "Katowice", 1500, "20.11-24.11.2024"));
+        trips.add(new Trip("Spain", "Madrid", "Cracow", 2000, "10.12-16.12.2024"));
+        trips.add(new Trip("England", "London", "Warsaw", 1250, "20.12-27.12.2024"));
+        trips.add(new Trip("Japan", "Tokyo", "Berlin", 3000, "03.01-05.01.2025"));
+        trips.add(new Trip("Italy", "Rome", "Katowice", 2200, "30.01-07.02.2024"));
         
         App.args = args;
         launch();

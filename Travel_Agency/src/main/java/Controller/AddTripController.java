@@ -113,6 +113,13 @@ public class AddTripController {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
             return;
+        } catch (WrongDateException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText("Invalid Date");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
         }
     }
 }
