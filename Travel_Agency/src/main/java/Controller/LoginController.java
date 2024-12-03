@@ -41,7 +41,7 @@ public class LoginController {
          * @param args 
          */
         
-    public LoginController(GenericList<User> users, GenericList<Trip> trips, String[] args) {
+    public LoginController(GenericList<User> users, GenericList<Trip> trips, String[] args) throws OutOfBoundsException{
         this.users = users;
         this.trips = trips;
         this.args = args;

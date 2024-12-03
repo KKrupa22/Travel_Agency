@@ -38,11 +38,17 @@ public class App extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
-        fxmlLoader.setControllerFactory(p -> {return new LoginController(users, trips, args);});
+        fxmlLoader.setControllerFactory(p -> {try {
+            return new LoginController(users, trips, args);
+            } catch (OutOfBoundsException ex) {
+                ex.printStackTrace();
+                return ex.getMessage();
+            }
+    });
         return fxmlLoader.load();
     }
     
-    public static void main(String[] args) throws NumberException, EmptyFieldsException, WrongDateException {
+    public static void main(String[] args) throws NumberException, EmptyFieldsException, WrongDateException, NullException {
         users = new GenericList<User>();
         users.add(new User("kamil", "123", "Kamil", "Krupa", false));
         users.add(new User("maciek", "321", "Maciej", "Adminowski", true));

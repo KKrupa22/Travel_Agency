@@ -21,7 +21,13 @@ public class GenericList<T> {
      * @param trip 
      */
     
-    public void add(T element) {
+    public void add(T element) throws NullException, EmptyFieldsException {
+        if(element == null) {
+            throw new NullException("Fields cannot be null");
+        }
+        if(element.equals("")) {
+            throw new EmptyFieldsException("Fields cannot be empty");
+        }
         data.add(element);
     }
     
@@ -40,7 +46,10 @@ public class GenericList<T> {
      * @return 
      */
     
-    public T get(int x) {
+    public T get(int x) throws OutOfBoundsException {
+        if(x >= data.size()) {
+            throw new OutOfBoundsException("Out of bounds");
+        }
         return data.get(x);
     }
     

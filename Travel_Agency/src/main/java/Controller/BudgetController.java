@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.WrongPriceException;
+import Model.OutOfBoundsException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -41,7 +42,7 @@ public class BudgetController {
      */
     
     @FXML
-    public void save(ActionEvent event) {
+    public void save(ActionEvent event) throws OutOfBoundsException {
         try {
             budget = Double.parseDouble(insertField.getText());
             if(budget <= 0) {

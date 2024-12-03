@@ -66,7 +66,7 @@ public class AddTripController {
      */
     
     @FXML
-    public void insertButton(ActionEvent event) {
+    public void insertButton(ActionEvent event) throws NullException, EmptyFieldsException {
         try {
             country = txtCountry.getText();
             city = txtCity.getText();

@@ -35,7 +35,7 @@ public class MenuController {
      * @param trips 
      */
     
-    private static void sortByPrice(GenericList<Trip> trips) {
+    private static void sortByPrice(GenericList<Trip> trips) throws NullException, EmptyFieldsException, OutOfBoundsException {
         List<Trip> temp = new ArrayList<>();
         for(int i = 0; i < trips.size(); i++) {
             temp.add(trips.get(i));
@@ -66,7 +66,7 @@ public class MenuController {
      */
     
     @FXML
-    private void availableTrip(ActionEvent event) throws IOException {
+    private void availableTrip(ActionEvent event) throws IOException, NullException, EmptyFieldsException, OutOfBoundsException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/Available.fxml"));
         loader.setControllerFactory(p -> {return new AvailableController(trips);});
         sortByPrice(trips);

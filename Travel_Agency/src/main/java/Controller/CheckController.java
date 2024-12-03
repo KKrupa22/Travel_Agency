@@ -46,7 +46,7 @@ public class CheckController implements Initializable {
      * @param budget - our budget
      */
     
-    public void setBudget(double budget) {
+    public void setBudget(double budget) throws OutOfBoundsException {
         this.budget = budget;
         refreshTable();
     }
@@ -58,7 +58,7 @@ public class CheckController implements Initializable {
      * @throws IOException 
      */
     
-    public CheckController (GenericList<Trip> trips, String[] args) throws IOException {
+    public CheckController (GenericList<Trip> trips, String[] args) throws IOException, OutOfBoundsException {
         this.trips = trips;
         this.args = args;
         
@@ -84,7 +84,7 @@ public class CheckController implements Initializable {
      * refreshTable method is used to refresh our table after inserting budget
      */
     
-    private void refreshTable() {
+    private void refreshTable() throws OutOfBoundsException {
         data.clear();
         for (int i = 0; i < trips.size(); i++) {
             if (budget >= trips.get(i).getPrice()) {

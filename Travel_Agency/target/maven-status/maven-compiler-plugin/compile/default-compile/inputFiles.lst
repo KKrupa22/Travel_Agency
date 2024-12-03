@@ -15,5 +15,6 @@ D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Model\NumberException.j
 D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Controller\LoginController.java
 D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Model\EmptyFieldsException.java
 D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Model\WrongLoginException.java
+D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Model\OutOfBoundsException.java
 D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Controller\AvailableController.java
 D:\Studia\JAVA\Travel_Agency\Travel_Agency\src\main\java\Model\User.java

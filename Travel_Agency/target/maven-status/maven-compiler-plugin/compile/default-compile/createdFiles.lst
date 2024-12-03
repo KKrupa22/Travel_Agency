@@ -9,6 +9,7 @@ Controller\BudgetController.class
 Model\NullException.class
 Controller\AvailableUserController.class
 kamil\krupa\cw2_final\App.class
+Model\OutOfBoundsException.class
 Model\WrongLoginException.class
 Model\NumberException.class
 Model\EmptyFieldsException.class
