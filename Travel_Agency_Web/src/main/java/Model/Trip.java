@@ -50,7 +50,7 @@ public class Trip {
     private double price;
     private String date;
     
-    public Trip(String country, String place, String depPlace, double price, String date) throws NumberException, EmptyFieldsException, WrongDateException {
+    public Trip(int id, String country, String place, String depPlace, double price, String date) throws NumberException, EmptyFieldsException, WrongDateException {
     
         if(country == null || place == null || depPlace == null || String.valueOf(price) == null || date == null || country.isEmpty() || place.isEmpty() || depPlace.isEmpty() || date.isEmpty()) {
             throw new EmptyFieldsException("Fields cannot be empty or null");
@@ -67,7 +67,7 @@ public class Trip {
            throw new WrongDateException("Write date in DD.MM-DD.MM.YYYY"); 
         }
         
-        this.id = Math.abs(rand.nextInt() % 1000);
+        this.id = id == 0 ? Math.abs(rand.nextInt() % 1000) : id;
         this.country = country;
         this.place = place;
         this.depPlace = depPlace;

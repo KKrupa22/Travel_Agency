@@ -24,15 +24,14 @@ public class AvailableServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ServletContext context = request.getServletContext();
-        GenericList model = (GenericList)context.getAttribute("GenericListModel");
+        GenericList model = (GenericList)context.getAttribute("GenericList");
         if(model == null) {
             model = new GenericList();
-            context.setAttribute("GenericListModel", model);
+            context.setAttribute("GenericList", model);
         }       
 
         PrintWriter out = response.getWriter();
         for(Trip trip : model.getData()){
-            
             out.println("<tr>");
             out.println("<td>");
             out.println("<input type=\"text\" id=\"Country"+trip.getId()+"\" name=\"country"+trip.getId()+"\" placeholder=\"Country\" value=\""+ trip.getCountry() + "\"/>");
@@ -41,7 +40,7 @@ public class AvailableServlet extends HttpServlet {
             out.println("<input type=\"text\" id=\"City"+trip.getId()+"\" name=\"city"+trip.getId()+"\" placeholder=\"City\" value=\""+ trip.getPlace()+ "\"/>");
             out.println("</td>");
             out.println("<td>");
-            out.println("<input type=\"text\" id=\"Departure City"+trip.getId()+"\" name=\"depCity"+trip.getId()+"\" placeholder=\"DepCity\" value=\""+ trip.getDepPlace() + "\"/>");
+            out.println("<input type=\"text\" id=\"DepCity"+trip.getId()+"\" name=\"depCity"+trip.getId()+"\" placeholder=\"DepCity\" value=\""+ trip.getDepPlace() + "\"/>");
             out.println("</td>");
             out.println("<td>");
             out.println("<input type=\"number\" id=\"Price"+trip.getId()+"\" name=\"price"+trip.getId()+"\" value=\"" + trip.getPrice() +"\" />");
@@ -50,7 +49,7 @@ public class AvailableServlet extends HttpServlet {
             out.println("<input type=\"text\" id=\"Date"+trip.getId()+"\" name=\"date"+trip.getId()+"\" value=\"" + trip.getDate() +"\" />");
             out.println("</td>");
             out.println("<td>");
-            out.println("<input type=\"button\" value=\"Update\" onclick=\"updateTrip(" + trip.getId() + ",'country','city','depCity','price','date','tableTripId','errorInfo');\" />");
+            out.println("<input type=\"button\" value=\"Update\" onclick=\"updateTrip(" + trip.getId() + ", 'Country','City','DepCity','Price','Date','tableTripId','errorInfo');\" />");
             out.println("</td>");
             out.println("<td>");
             out.println("<input type=\"button\" value=\"Delete\" onclick=\"deleteTrip(" + trip.getId() + ", 'tableTripId','errorInfo');\" />");

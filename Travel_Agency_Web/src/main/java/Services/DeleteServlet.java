@@ -27,18 +27,14 @@ public class DeleteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         ServletContext context = request.getServletContext();
-        GenericList model = (GenericList)context.getAttribute("GenericListModel");
-        if(model == null) {
-            model = new GenericList();
-            context.setAttribute("GenericListModel", model);
-        }               
+        GenericList model = (GenericList)context.getAttribute("GenericList");            
         
         String idArg = request.getParameter("id");
         PrintWriter out = response.getWriter();        
         try {
             int id = Integer.parseInt(idArg);
             model.delete(id);
-            response.sendRedirect(request.getContextPath() + "/people");
+            response.sendRedirect(request.getContextPath() + "/AvailableServlet");
         } catch(NumberFormatException ex){      
             out.println(ex.toString());
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

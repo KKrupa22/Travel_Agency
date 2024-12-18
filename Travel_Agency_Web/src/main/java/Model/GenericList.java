@@ -18,12 +18,12 @@ public class GenericList {
     
     public GenericList() {
         try {
-        data.add(new Trip("Poland", "Warsaw", "Katowice", 500, "20.11-24.11.2024"));
-        data.add(new Trip("Germany", "Berlin", "Katowice", 1500, "20.11-24.11.2024"));
-        data.add(new Trip("Spain", "Madrid", "Cracow", 2000, "10.12-16.12.2024"));
-        data.add(new Trip("England", "London", "Warsaw", 1250, "20.12-27.12.2024"));
-        data.add(new Trip("Japan", "Tokyo", "Berlin", 3000, "03.01-05.01.2025"));
-        data.add(new Trip("Italy", "Rome", "Katowice", 2200, "30.01-07.02.2024"));
+        data.add(new Trip(1, "Poland", "Warsaw", "Katowice", 500, "20.11-24.11.2024"));
+        data.add(new Trip(2, "Germany", "Berlin", "Katowice", 1500, "20.11-24.11.2024"));
+        data.add(new Trip(3, "Spain", "Madrid", "Cracow", 2000, "10.12-16.12.2024"));
+        data.add(new Trip(4, "England", "London", "Warsaw", 1250, "20.12-27.12.2024"));
+        data.add(new Trip(5, "Japan", "Tokyo", "Berlin", 3000, "03.01-05.01.2025"));
+        data.add(new Trip(6, "Italy", "Rome", "Katowice", 2200, "30.01-07.02.2024"));
         } catch(NumberException | EmptyFieldsException | WrongDateException ex) {}
     }
     
@@ -76,13 +76,26 @@ public class GenericList {
      * getData method is used to return data from observable list
      * @return 
      */
-    
+
     public List<Trip> getData() {
         return data;
     }
-    
+
     public boolean delete(int id) {
         return data.removeIf(i -> i.getId() == id);
     }
+
+    public boolean update(Trip trip) {
+        for(int i = 0; i < data.size(); ++i) {
+            if(data.get(i).getId() == trip.getId()) {
+                data.set(i, trip);
+                return true;
+            }
+        }        
+        return false;
+    }
     
+    public void persistObject(Object object) {
+        if(object instanceof Trip trip) data.add(trip);
+    }
 }

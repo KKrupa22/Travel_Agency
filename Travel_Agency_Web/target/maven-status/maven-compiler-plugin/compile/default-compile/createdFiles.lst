@@ -4,10 +4,13 @@ Model\NumberException.class
 Model\Trip.class
 Model\WrongDateException.class
 Model\GenericList.class
+Services\BudgetServlet.class
+Services\UpdateServlet.class
 Model\EmptyFieldsException.class
 Model\WrongPriceException.class
 Services\AvailableServlet.class
 Model\NullException.class
 kamil\krupa\travel_agency_web\JakartaRestConfiguration.class
 kamil\krupa\travel_agency_web\resources\JakartaEE10Resource.class
+Services\InsertServlet.class
 Model\OutOfBoundsException.class
