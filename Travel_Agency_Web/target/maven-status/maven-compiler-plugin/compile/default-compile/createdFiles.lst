@@ -1,0 +1,13 @@
+Model\WrongLoginException.class
+Services\DeleteServlet.class
+Model\NumberException.class
+Model\Trip.class
+Model\WrongDateException.class
+Model\GenericList.class
+Model\EmptyFieldsException.class
+Model\WrongPriceException.class
+Services\AvailableServlet.class
+Model\NullException.class
+kamil\krupa\travel_agency_web\JakartaRestConfiguration.class
+kamil\krupa\travel_agency_web\resources\JakartaEE10Resource.class
+Model\OutOfBoundsException.class

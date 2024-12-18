@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Available trips</title>
+        <script src="js/available.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="getAvailableTable('tableTripId')">
+        <h1>Available trips</h1>
+        <div id="errorInfo" class="errorInfo">&nbsp;</div>
+        <hr/>
+        <input type="text" id="country" name="country" placeholder="Country"/>
+        <input type="text" id="city" name="city" placeholder="City"/>
+        <input type="text" id="depCity" name="depCity" placeholder="Departure City"/>
+        <input type="text" id="price" name="price" placeholder="Price"/>
+        <input type="date" id="date" name="date"/>
+        <input type="button" id="Insert" value="Add" onClick="insertTrip('country', 'city', 'depPlace', 'price', 'date', 'tableTripId','errorInfo');" />
+        
+        <hr/>
+        <table>
+            <thead>                
+                <tr>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Departure City</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>            
+            <tbody id="tableTripId">
+            </tbody>            
+        </table>
+    </body>
+</html>
