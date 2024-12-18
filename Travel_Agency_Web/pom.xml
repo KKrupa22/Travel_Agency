@@ -5,7 +5,7 @@
     <artifactId>Travel_Agency_Web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Travel_Agency_Web-1.0-SNAPSHOT</name>
+    <name>Travel_Agency_Web</name>
     
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -25,6 +25,21 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>4.0.4</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.17.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.17.1.0</version>
         </dependency>
     </dependencies>
     

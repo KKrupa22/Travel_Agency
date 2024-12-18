@@ -44,6 +44,7 @@ public class UpdateServlet extends HttpServlet {
             out.println(ex.toString());
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

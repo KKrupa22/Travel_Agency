@@ -4,6 +4,11 @@
  */
 package Model;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceException;
+import jakarta.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +21,13 @@ public class GenericList {
    
     private final List<Trip> data = new ArrayList<>();
     
+    private final EntityManagerFactory emf;
+
     public GenericList() {
+        emf = Persistence.createEntityManagerFactory("Travel_Agency_Web");
+    }
+    
+    /*public GenericList() {
         try {
         data.add(new Trip(1, "Poland", "Warsaw", "Katowice", 500, "20.11-24.11.2024"));
         data.add(new Trip(2, "Germany", "Berlin", "Katowice", 1500, "20.11-24.11.2024"));
@@ -25,7 +36,7 @@ public class GenericList {
         data.add(new Trip(5, "Japan", "Tokyo", "Berlin", 3000, "03.01-05.01.2025"));
         data.add(new Trip(6, "Italy", "Rome", "Katowice", 2200, "30.01-07.02.2024"));
         } catch(NumberException | EmptyFieldsException | WrongDateException ex) {}
-    }
+    }*/
     
     /**
      * add method, it allows us to add a trip into our list
@@ -77,7 +88,7 @@ public class GenericList {
      * @return 
      */
 
-    public List<Trip> getData() {
+    /*public List<Trip> getData() {
         return data;
     }
 
@@ -97,5 +108,58 @@ public class GenericList {
     
     public void persistObject(Object object) {
         if(object instanceof Trip trip) data.add(trip);
+    }*/
+    
+    public void persistObject(Object object) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.persist(object);
+            em.getTransaction().commit();     
+        } catch (PersistenceException e) {            
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
     }
+    
+    public List<Trip> getData() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            Query query = em.createQuery("SELECT t FROM Trip t");            
+            return query.getResultList();         
+        } catch (PersistenceException e) {
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return new ArrayList<>();
+    }
+      
+    public boolean update(Trip trip) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            em.merge(trip);
+            em.getTransaction().commit();
+        } catch(Exception ex){            
+        }        
+        return true;
+    }
+        
+    public boolean delete(int id) {
+        EntityManager em = emf.createEntityManager();
+        try{           
+            em.getTransaction().begin();
+            var result = em.createQuery("DELETE FROM Trip t WHERE t.id=:id").setParameter("id", id).executeUpdate() != 0;
+            em.getTransaction().commit(); 
+            return result;
+        } catch(Exception ex) {
+            em.getTransaction().rollback();
+        } finally {
+            em.close();            
+        }    
+        return true;
+    }
+    
 }

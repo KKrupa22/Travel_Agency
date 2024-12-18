@@ -29,11 +29,7 @@ public class BudgetServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         ServletContext context = request.getServletContext();
-        GenericList model = (GenericList)context.getAttribute("GenericList");
-        if(model == null) {
-            model = new GenericList();
-            context.setAttribute("GenericList", model);
-        }         
+        GenericList model = (GenericList)context.getAttribute("GenericList");         
         PrintWriter out = response.getWriter();
         
         double budget = Double.parseDouble(request.getParameter("budget"));

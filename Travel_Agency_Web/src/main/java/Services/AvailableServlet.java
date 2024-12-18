@@ -24,11 +24,7 @@ public class AvailableServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ServletContext context = request.getServletContext();
-        GenericList model = (GenericList)context.getAttribute("GenericList");
-        if(model == null) {
-            model = new GenericList();
-            context.setAttribute("GenericList", model);
-        }       
+        GenericList model = (GenericList)context.getAttribute("GenericList");       
 
         PrintWriter out = response.getWriter();
         for(Trip trip : model.getData()){

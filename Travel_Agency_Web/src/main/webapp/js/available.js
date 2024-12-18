@@ -6,7 +6,7 @@ function getAvailableTable(tableId) {
     }
   };
   
-  xhttp.open("GET", "AvailableServlet", true);
+  xhttp.open("POST", "AvailableServlet", true);
   xhttp.send();
 }
 

@@ -7,6 +7,7 @@ Model\GenericList.class
 Services\BudgetServlet.class
 Services\UpdateServlet.class
 Model\EmptyFieldsException.class
+Services\InitializationServlet.class
 Model\WrongPriceException.class
 Services\AvailableServlet.class
 Model\NullException.class
